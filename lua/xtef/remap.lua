@@ -1,6 +1,4 @@
 vim.g.mapleader = " "
-
--- ATAJOS DE TECLADO
 local keymap = vim.keymap.set
 
 -- Explorador: Espacio + e
@@ -16,23 +14,21 @@ keymap("n", "<leader>x", ":bdelete<CR>", { silent = true })
 -- Saltar entre paneles (Explorador <-> Código): Ctrl + w + w
 keymap("n", "<C-w><C-w>", "<C-w>w")
 
--- FUZZY FINDER (fzf-lua)
--- ff = Find Files (Buscar archivos)
+-- FZF
+-- ff = Buscar archivos
 keymap("n", "<leader>ff", "<cmd>FzfLua files<CR>", { desc = "Buscar archivos" })
--- fg = Live Grep (Buscar texto dentro de los archivos)
+-- fg = Buscar texto dentro de los archivos
 keymap("n", "<leader>fg", "<cmd>FzfLua live_grep<CR>", { desc = "Buscar texto" })
--- fb = Find Buffers (Buscar entre archivos abiertos)
+-- fb = Buscar entre archivos abiertos
 keymap("n", "<leader>fb", "<cmd>FzfLua buffers<CR>", { desc = "Buscar pestañas" })
--- fs = (Buscar archivos en todo el sistema")
+-- fs = Buscar archivos en todo el sistema"
 keymap("n", "<leader>fs", function() 
     require('fzf-lua').files({ cwd = vim.fn.expand("$HOME") }) 
 end, { desc = "Buscar archivos en todo el sistema" })
-
--- Buscar DIRECTORIOS en todo el sistema con SPC f d (Find Directory)
+-- fd = Buscar directorios (hace falta tener fd instalado)
 keymap("n", "<leader>fd", function()
     require('fzf-lua').files({ 
         cwd = vim.fn.expand("$HOME"),
-        -- Comando para que solo busque directorios (folders)
         cmd = "fd --type d --hidden --exclude .git" 
     })
 end, { desc = "Buscar carpetas en todo el sistema" })
