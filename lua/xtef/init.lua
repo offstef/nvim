@@ -39,7 +39,7 @@ require("lazy").setup({
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
             options = {
-                offsets = { { filetype = "NvimTree", text = "EXPLORADOR", separator = true, text_align = "left" } },
+                offsets = { { filetype = "NvimTree", text = "", separator = true, text_align = "left" } },
                 separator_style = "slant",
             }
         }
