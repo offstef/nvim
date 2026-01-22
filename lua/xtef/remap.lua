@@ -14,21 +14,32 @@ keymap("n", "<leader>x", ":bdelete<CR>", { silent = true })
 -- Saltar entre paneles (Explorador <-> Código): Ctrl + w + w
 keymap("n", "<C-w><C-w>", "<C-w>w")
 
--- FZF
 -- ff = Buscar archivos
-keymap("n", "<leader>ff", "<cmd>FzfLua files<CR>", { desc = "Buscar archivos" })
--- fg = Buscar texto dentro de los archivos
-keymap("n", "<leader>fg", "<cmd>FzfLua live_grep<CR>", { desc = "Buscar texto" })
+vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Buscar archivos" })
+
+-- fg = Buscar texto dentro de un proyecto
+vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Buscar texto en proyecto" })
+
+-- fl = Buscar texto dentro del archivo actual
+vim.keymap.set("n", "<leader>fl", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Buscar texto en archivo actual" })
+
 -- fb = Buscar entre archivos abiertos
-keymap("n", "<leader>fb", "<cmd>FzfLua buffers<CR>", { desc = "Buscar pestañas" })
--- fs = Buscar archivos en todo el sistema"
-keymap("n", "<leader>fs", function() 
-    require('fzf-lua').files({ cwd = vim.fn.expand("$HOME") }) 
+vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Buscar pestañas" })
+
+-- Para las funciones personalizadas (fs y fd), usamos una función anónima 
+-- que haga el require solo cuando se ejecute el comando:
+
+-- fs = Buscar archivos en todo el sistema ($HOME)
+vim.keymap.set("n", "<leader>fs", function()
+    require('telescope.builtin').find_files({ cwd = vim.fn.expand("$HOME") })
 end, { desc = "Buscar archivos en todo el sistema" })
--- fd = Buscar directorios (hace falta tener fd instalado)
-keymap("n", "<leader>fd", function()
-    require('fzf-lua').files({ 
+
+-- fd = Buscar directorios en todo el sistema
+vim.keymap.set("n", "<leader>fd", function()
+    require('telescope.builtin').find_files({
         cwd = vim.fn.expand("$HOME"),
-        cmd = "fd --type d --hidden --exclude .git" 
+        find_command = { "fd", "--type", "d", "--hidden", "--exclude", ".git" }
     })
 end, { desc = "Buscar carpetas en todo el sistema" })
+keymap("n", "<leader>cp", ":Copilot panel<CR>", { desc = "Abrir panel Copilot" })
+vim.keymap.set("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "Abrir LazyGit" })
