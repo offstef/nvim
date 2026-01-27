@@ -1,18 +1,17 @@
 local keymap = vim.keymap.set
 
-keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Buscar archivos" })
-keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Buscar texto global" })
-keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Ver pestañas abiertas" })
-keymap("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
-    { desc = "Buscar TODO" })
+keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
+keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
+keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
+keymap("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>")
 
-keymap({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copiar al sistema" })
-keymap("n", "<leader>Y", [["+Y]], { desc = "Copiar línea al sistema" })
-keymap("n", "<leader>ya", [[:%y+<CR>]], { desc = "Copiar archivo entero" })
-keymap("x", "<leader>p", [["_dP]], { desc = "Pegar sticky" })
+keymap({ "n", "v" }, "<leader>y", [["+y]])
+keymap("n", "<leader>Y", [["+Y]])
+keymap("n", "<leader>ya", [[:%y+<CR>]])
+keymap("x", "<leader>p", [["_dP]])
 
-keymap("v", "J", ":m '>+1<CR>gv=gv", { desc = "Mover bloque abajo" })
-keymap("v", "K", ":m '<-2<CR>gv=gv", { desc = "Mover bloque arriba" })
+keymap("v", "J", ":m '>+1<CR>gv=gv")
+keymap("v", "K", ":m '<-2<CR>gv=gv")
 
 keymap("n", "J", "mzJ`z")
 keymap("n", "<C-d>", "<C-d>zz")
@@ -20,8 +19,8 @@ keymap("n", "<C-u>", "<C-u>zz")
 keymap("n", "n", "nzzzv")
 keymap("n", "N", "Nzzzv")
 
-keymap("n", "<leader>w", ":w<CR>", { desc = "Guardar" })
-keymap("n", "<leader>q", ":q<CR>", { desc = "Salir" })
+keymap("n", "<leader>w", ":w<CR>")
+keymap("n", "<leader>q", ":q<CR>")
 
 keymap("n", "<leader>x", ":bdelete<CR>", { silent = true })
 keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", { silent = true })
